@@ -6,19 +6,12 @@ const user = require('../../services/user.js');
 const app = getApp()
 Page({
   data: {
-    goodsCount: 0,
-    newGoods: [],
-    hotGoods: [],
-    topics: [],
-    brands: [],
-    floorGoods: [],
-    banner: [],
-    channel: []
+    goods: []
   },
   onShareAppMessage: function () {
     return {
       title: 'NideShop',
-      desc: '仿网易严选微信小程序商城',
+      desc: '顺迪玩具商城',
       path: '/pages/index/index'
     }
   },
@@ -28,13 +21,7 @@ Page({
     util.request(api.IndexUrl).then(function (res) {
       if (res.errno === 0) {
         that.setData({
-          newGoods: res.data.newGoodsList,
-          hotGoods: res.data.hotGoodsList,
-          topics: res.data.topicList,
-          brand: res.data.brandList,
-          floorGoods: res.data.categoryList,
-          banner: res.data.banner,
-          channel: res.data.channel
+          goods: res.data.goods
         });
       }
     });
@@ -43,7 +30,7 @@ Page({
     this.getIndexData();
     util.request(api.GoodsCount).then(res => {
       this.setData({
-        goodsCount: res.data.goodsCount
+        goodsCount: 2
       });
     });
   },

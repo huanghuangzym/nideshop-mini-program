@@ -5,7 +5,6 @@
     "pages/newGoods/newGoods",
     "pages/hotGoods/hotGoods",
     "pages/ucenter/address/address",
-    "pages/ucenter/addressAdd/addressAdd",
     "pages/ucenter/footprint/footprint",
     "pages/ucenter/order/order",
     "pages/ucenter/orderDetail/orderDetail",
@@ -25,7 +24,6 @@
     "pages/topicComment/topicComment",
     "pages/brand/brand",
     "pages/brandDetail/brandDetail",
-    "pages/search/search",
     "pages/category/category",
     "pages/cart/cart",
     "pages/shopping/checkout/checkout",
@@ -37,7 +35,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "仿网易严选",
+    "navigationBarTitleText": "顺迪玩具",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
@@ -52,12 +50,6 @@
         "iconPath": "static/images/ic_menu_choice_nor.png",
         "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/topic/topic",
-        "iconPath": "static/images/ic_menu_topic_nor.png",
-        "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
-        "text": "专题"
       },
       {
         "pagePath": "pages/catalog/catalog",
@@ -83,5 +75,6 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

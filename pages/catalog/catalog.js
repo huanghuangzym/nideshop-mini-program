@@ -3,13 +3,7 @@ var api = require('../../config/api.js');
 
 Page({
   data: {
-    navList: [],
-    categoryList: [],
-    currentCategory: {},
-    scrollLeft: 0,
-    scrollTop: 0,
-    goodsCount: 0,
-    scrollHeight: 0
+    goods: []
   },
   onLoad: function (options) {
     this.getCatalog();
@@ -20,27 +14,11 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-    util.request(api.CatalogList).then(function (res) {
+    util.request(api.IndexUrl).then(function (res) {
         that.setData({
-          navList: res.data.categoryList,
-          currentCategory: res.data.currentCategory
+          goods: res.data.goods
         });
         wx.hideLoading();
-      });
-    util.request(api.GoodsCount).then(function (res) {
-      that.setData({
-        goodsCount: res.data.goodsCount
-      });
-    });
-
-  },
-  getCurrentCategory: function (id) {
-    let that = this;
-    util.request(api.CatalogCurrent, { id: id })
-      .then(function (res) {
-        that.setData({
-          currentCategory: res.data.currentCategory
-        });
       });
   },
   onReady: function () {
@@ -55,22 +33,4 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
-  getList: function () {
-    var that = this;
-    util.request(api.ApiRootUrl + 'api/catalog/' + that.data.currentCategory.cat_id)
-      .then(function (res) {
-        that.setData({
-          categoryList: res.data,
-        });
-      });
-  },
-  switchCate: function (event) {
-    var that = this;
-    var currentTarget = event.currentTarget;
-    if (this.data.currentCategory.id == event.currentTarget.dataset.id) {
-      return false;
-    }
-
-    this.getCurrentCategory(event.currentTarget.dataset.id);
-  }
 })
